@@ -59,7 +59,7 @@ def save_data():
     e = e_var.get()
     translation = translation_var.get()
     data = get_data()
-    progress_bar["maximum"] = (page_limit-1)*20
+    progress_bar["maximum"] = (page_limit-1)*100
 
     if login: data["login"] = login
     if token: data["api_key"] = token
@@ -144,7 +144,8 @@ def getPosts(tags, data):
             "tags": tags,
             "page": i,
             "login": data["login"],
-            "api_key": data["api_key"]
+            "api_key": data["api_key"],
+            "limit": 100
         }
         #make request
         req = requests.get(f'{data["url"]}/posts.json', params=params)
